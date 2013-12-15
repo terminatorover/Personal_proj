@@ -11,20 +11,22 @@ msg = """I just wanted to say hello"""
 username = str('senders username info')
 password  = str('senders pass')
 
-#try:
+try:
 
 
-server = smtplib.SMTP('smtp.gmail.com',587)
-#SMTP.verify(username)
-server.ehlo()
-server.starttls()
-server.ehlo()
-server.login(username,password)
-#    server.set_debuglevel(1)
-#message = msg.as_string()
-server.sendmail(sender,recpient,msg)   
+    server = smtplib.SMTP('smtp.gmail.com',587)
+    #establish connection 
+    server.ehlo()
+    server.starttls()
+    server.ehlo()
+    server.login(username,password)
 
-server.quit()
+#send mail
+    server.sendmail(sender,recpient,msg)   
+    print "message sent"
+except:
+       server.quit()
+       print "message not sent"
 
  
 
